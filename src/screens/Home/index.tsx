@@ -17,19 +17,21 @@ export function Home() {
         Sexta, 4 de novembro de 2022
       </Text>
 
-      <TextInput 
-        style={styles.input}
-        placeholder="Nome do participante"
-        placeholderTextColor="#6B6B6B"
-        keyboardType="numbers-and-punctuation"
-      />
+      <View style={styles.form}>
+        <TextInput 
+          style={styles.input}
+          placeholder="Nome do participante"
+          placeholderTextColor="#6B6B6B"
+          keyboardType="numbers-and-punctuation"
+        />
 
-      <TouchableOpacity 
-        style={styles.button}
-        onPress={handleParticipantAdd}
-      >
-        <Text style={styles.buttonText}>+</Text>
-      </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={handleParticipantAdd}
+        >
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
