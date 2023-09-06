@@ -1,27 +1,39 @@
-import { FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useState } from 'react';
+import { Alert, FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Participant } from '../components/Participant';
 import { styles } from './styles';
 
 export function Home() {
-  const participants = [
-    'John',
-    'Emily',
-    'Michael',
-    'Sarah',
-    'David',
-    'Jessica',
-    'Daniel',
-    'Jennifer',
-    'Matthew',
-    'Elizabeth'
-  ];
+   const [participants, setParticipants] = useState(["John"]);
 
   function handleParticipantAdd(name: String){
-    console.log(`Participant add...${name}`)
+    // Verificar se os nomes são únicos
+    if(participants.includes("Sarah")){
+      return Alert.alert(
+        "Adicionar Participante", 
+        "Já existe um participante na lista com este nome"
+      )
+    }
+
+    setParticipants(prevState => [...prevState, "Ana"]);
+    console.log(participants);
   }
 
   function handleParticipantRemove(name : String){
-    console.log(`Participant removed...${name}`)
+    return Alert.alert(
+      "Excluir Participante", 
+      `Deseja realmente excluir ${name} como presente no evento?`,
+      [
+        {
+          text: "Sim",
+          onPress: () => Alert.alert(`Participante ${name} removido`)
+        },
+        {
+          text: "Não",
+          style: "cancel"
+        }
+      ]
+    )
   }
 
   return (
