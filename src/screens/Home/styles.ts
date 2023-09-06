@@ -49,5 +49,11 @@ export const styles = StyleSheet.create({
     width: '100%',
     marginTop: 36,
     marginBottom: 46
+  },
+
+  listEmpatyParticipants: {
+    color: '#FFF',
+    fontSize: 14,
+    textAlign: 'center'
   }
 });
