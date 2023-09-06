@@ -4,19 +4,21 @@ import { Participant } from '../components/Participant';
 import { styles } from './styles';
 
 export function Home() {
-   const [participants, setParticipants] = useState(["John"]);
+   const [participants, setParticipants] = useState<string[]>([]);
+   const [newParticipant, setNewParticipant] = useState<string>("");
 
-  function handleParticipantAdd(name: String){
+
+  function handleParticipantAdd(){
     // Verificar se os nomes são únicos
-    if(participants.includes("Sarah")){
+    if(participants.includes(newParticipant) || newParticipant == ""){
       return Alert.alert(
         "Adicionar Participante", 
-        "Já existe um participante na lista com este nome"
+        "Participante já cadastrado ou o campo está vazio"
       )
     }
 
-    setParticipants(prevState => [...prevState, "Ana"]);
-    console.log(participants);
+    setParticipants(prevState => [...prevState, newParticipant]);
+    setNewParticipant("");
   }
 
   function handleParticipantRemove(name : String){
@@ -52,11 +54,13 @@ export function Home() {
           placeholder="Nome do participante"
           placeholderTextColor="#6B6B6B"
           keyboardType="numbers-and-punctuation"
+          onChangeText={text => setNewParticipant(text)}
+          value={newParticipant}
         />
 
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => handleParticipantAdd("Ewerson")}
+          onPress={() => handleParticipantAdd()}
         >
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
