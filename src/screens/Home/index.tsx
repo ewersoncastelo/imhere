@@ -21,14 +21,17 @@ export function Home() {
     setNewParticipant("");
   }
 
-  function handleParticipantRemove(name : String){
+  function handleParticipantRemove(name : string){
     return Alert.alert(
       "Excluir Participante", 
       `Deseja realmente excluir ${name} como presente no evento?`,
       [
         {
           text: "Sim",
-          onPress: () => Alert.alert(`Participante ${name} removido`)
+          onPress: () => (
+            setParticipants(prevState => prevState.filter(participant => participant !== name)),
+            Alert.alert(`Participante ${name} removido`)
+          ),
         },
         {
           text: "Não",
