@@ -4,8 +4,12 @@ import { styles } from './styles';
 
 export function Home() {
 
-  function handleParticipantAdd(){
-    console.log('Participant add...')
+  function handleParticipantAdd(name: String){
+    console.log(`Participant add...${name}`)
+  }
+
+  function handleParticipantRemove(name : String){
+    console.log(`Participant removed...${name}`)
   }
 
   return (
@@ -28,7 +32,7 @@ export function Home() {
 
         <TouchableOpacity 
           style={styles.button}
-          onPress={handleParticipantAdd}
+          onPress={() => handleParticipantAdd("Ewerson")}
         >
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
@@ -36,6 +40,7 @@ export function Home() {
 
       <Participant 
         name="Ewerson"
+        onRemove={() => handleParticipantRemove("Ewerson")}
       />
     </View>
   );
